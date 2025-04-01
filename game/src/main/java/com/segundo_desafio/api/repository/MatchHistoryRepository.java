@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface matchHistoryRepository extends JpaRepository<MatchHistory, UUID> {
+public interface MatchHistoryRepository extends JpaRepository<MatchHistory, UUID> {
 }
