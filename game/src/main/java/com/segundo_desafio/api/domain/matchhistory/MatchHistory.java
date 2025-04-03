@@ -1,14 +1,12 @@
-package com.segundo_desafio.api.domain.matchHistory;
-
-
+package com.segundo_desafio.api.domain.matchhistory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Table(name = "matchHistory")
@@ -16,6 +14,7 @@ import java.util.UUID;
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class MatchHistory {
     @Id
     @GeneratedValue
