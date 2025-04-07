@@ -1,4 +1,4 @@
-package com.segundo_desafio.api;
+package com.segundo_desafio.game;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
