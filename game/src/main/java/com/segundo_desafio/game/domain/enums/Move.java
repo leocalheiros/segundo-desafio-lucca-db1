@@ -1,4 +1,4 @@
-package com.segundo_desafio.api.model;
+package com.segundo_desafio.game.domain.enums;
 
 public enum Move {
     ROCK("Rock"),

@@ -1,9 +1,9 @@
-package com.segundo_desafio.api.controller;
+package com.segundo_desafio.game.api.controller;
 
 
-import com.segundo_desafio.api.domain.round.RoundRequestDTO;
-import com.segundo_desafio.api.domain.round.RoundResponseDTO;
-import com.segundo_desafio.api.service.RoundService;
+import com.segundo_desafio.game.domain.dto.RoundRequestDTO;
+import com.segundo_desafio.game.domain.dto.RoundResponseDTO;
+import com.segundo_desafio.game.domain.service.RoundService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class RoundController {
     public ResponseEntity<RoundResponseDTO> startGame(@RequestBody RoundRequestDTO body){
 
         roundService.saveRound(body);
-        RoundResponseDTO res = roundService.getWinner(body);
+        RoundResponseDTO res = roundService.startGame(body);
 
         return ResponseEntity.ok(res);
     }

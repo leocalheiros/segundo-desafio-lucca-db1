@@ -1,4 +1,4 @@
-package com.segundo_desafio.api.exception;
+package com.segundo_desafio.game.api.model.exception;
 
 
 

@@ -1,4 +1,4 @@
-package com.segundo_desafio.api.domain.matchhistory;
+package com.segundo_desafio.game.domain.dto;
 
 import java.time.LocalDateTime;
 

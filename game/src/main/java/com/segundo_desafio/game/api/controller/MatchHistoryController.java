@@ -1,7 +1,7 @@
-package com.segundo_desafio.api.controller;
+package com.segundo_desafio.game.api.controller;
 
-import com.segundo_desafio.api.domain.matchhistory.MatchHistoryResponseDTO;
-import com.segundo_desafio.api.service.MatchHistoryService;
+import com.segundo_desafio.game.domain.dto.MatchHistoryResponseDTO;
+import com.segundo_desafio.game.domain.service.MatchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

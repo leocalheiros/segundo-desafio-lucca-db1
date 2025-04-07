@@ -1,4 +1,4 @@
-package com.segundo_desafio.api.domain.round;
+package com.segundo_desafio.game.domain.dto;
 
 public record RoundResponseDTO(
         String playerOneMove,

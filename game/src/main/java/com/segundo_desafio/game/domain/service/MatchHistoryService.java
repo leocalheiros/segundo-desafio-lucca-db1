@@ -1,16 +1,14 @@
-package com.segundo_desafio.api.service;
+package com.segundo_desafio.game.domain.service;
 
 
-import com.segundo_desafio.api.domain.gamerules.GameRules;
-import com.segundo_desafio.api.domain.matchhistory.MatchHistory;
-import com.segundo_desafio.api.domain.matchhistory.MatchHistoryResponseDTO;
-import com.segundo_desafio.api.model.Move;
-import com.segundo_desafio.api.repository.MatchHistoryRepository;
+import com.segundo_desafio.game.persistence.model.MatchHistory;
+import com.segundo_desafio.game.domain.dto.MatchHistoryResponseDTO;
+import com.segundo_desafio.game.domain.enums.Move;
+import com.segundo_desafio.game.persistence.repository.MatchHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MatchHistoryService {
@@ -27,9 +25,10 @@ public class MatchHistoryService {
 
     private MatchHistoryResponseDTO toResponseDTO(MatchHistory history){
 
+
         Move playerOneMove = Move.valueOf(history.getPlayerOneMove().toUpperCase());
         Move playerTwoMove = Move.valueOf(history.getPlayerTwoMove().toUpperCase());
-        String result = GameRules.checkWinner(playerOneMove, playerTwoMove);
+        String result = GameRulesService.checkWinner(playerOneMove, playerTwoMove);
 
         return new MatchHistoryResponseDTO(
                 history.getPlayerOneMove(),

@@ -1,4 +1,4 @@
-package com.segundo_desafio.api.domain.matchhistory;
+package com.segundo_desafio.game.persistence.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

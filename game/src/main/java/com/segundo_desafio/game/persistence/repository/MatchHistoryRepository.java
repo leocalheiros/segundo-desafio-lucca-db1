@@ -1,6 +1,6 @@
-package com.segundo_desafio.api.repository;
+package com.segundo_desafio.game.persistence.repository;
 
-import com.segundo_desafio.api.domain.matchhistory.MatchHistory;
+import com.segundo_desafio.game.persistence.model.MatchHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

@@ -1,6 +1,7 @@
-package com.segundo_desafio.api.exception;
+package com.segundo_desafio.game.api.handler;
 
 
+import com.segundo_desafio.game.api.model.exception.InvalidGameRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

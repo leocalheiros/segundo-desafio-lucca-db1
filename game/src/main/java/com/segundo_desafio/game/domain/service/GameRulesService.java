@@ -1,8 +1,8 @@
-package com.segundo_desafio.api.domain.gamerules;
+package com.segundo_desafio.game.domain.service;
 
-import com.segundo_desafio.api.model.Move;
+import com.segundo_desafio.game.domain.enums.Move;
 
-public class GameRules {
+public class GameRulesService {
 
     private static boolean gameLogic(Move move, Move otherMove) {
         return (move == Move.ROCK && otherMove == Move.SCISSORS) ||
