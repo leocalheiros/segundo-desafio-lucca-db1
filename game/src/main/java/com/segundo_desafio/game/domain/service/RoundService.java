@@ -21,7 +21,8 @@ public class RoundService {
     private final RoundRequestValidator roundRequestValidator;
     private final MoveValidator moveValidator;
 
-    public void saveRound (RoundRequestDTO data){
+    public RoundResponseDTO saveRound (RoundRequestDTO data){
+
         roundRequestValidator.validate(data);
         moveValidator.validate(data);
 
@@ -33,9 +34,6 @@ public class RoundService {
         history.setDate(LocalDateTime.now());
 
         repository.save(history);
-    }
-
-    public RoundResponseDTO startGame(RoundRequestDTO data){
 
         Move playerOneMove = Move.valueOf(data.playerOneMove().toUpperCase());
         Move playerTwoMove = Move.valueOf(data.playerTwoMove().toUpperCase());
@@ -49,4 +47,5 @@ public class RoundService {
                 data.playerTwoName(),
                 winner);
     }
+
 }

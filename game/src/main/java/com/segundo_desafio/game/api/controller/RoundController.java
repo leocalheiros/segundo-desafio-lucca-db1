@@ -22,10 +22,7 @@ public class RoundController {
     @PostMapping("/play")
     public ResponseEntity<RoundResponseDTO> startGame(@RequestBody RoundRequestDTO body){
 
-        roundService.saveRound(body);
-        RoundResponseDTO res = roundService.startGame(body);
-
-        return ResponseEntity.ok(res);
+        return ResponseEntity.ok(roundService.saveRound(body));
     }
 
 }

@@ -76,7 +76,7 @@ class RoundServiceTest {
     void shouldReturnCorrectWinner(String p1Move, String p2Move, String expectedWinner){
         RoundRequestDTO dto = new RoundRequestDTO(p1Move, "Lucca", p2Move, "Bot");
 
-        RoundResponseDTO response = service.startGame(dto);
+        RoundResponseDTO response = service.saveRound(dto);
 
         assertEquals(expectedWinner, response.result());
         assertEquals(p1Move, response.playerOneMove());
