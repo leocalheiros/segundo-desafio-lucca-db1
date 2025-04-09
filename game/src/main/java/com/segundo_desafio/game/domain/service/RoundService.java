@@ -26,7 +26,7 @@ public class RoundService {
     private static final Logger logger = LogManager.getLogger(RoundService.class.getName());
 
     public RoundResponseDTO saveRound (RoundRequestDTO data){
-        logger.info("Received data: " + data);
+        logger.info("Received data:{} ", data);
 
         roundRequestValidator.validate(data);
         moveValidator.validate(data);
@@ -50,7 +50,7 @@ public class RoundService {
                 data.playerTwoMove().toUpperCase(),
                 data.playerTwoName(),
                 winner);
-        logger.info("Response: " + res.toString());
+        logger.info("Response: {}", res);
         return res;
     }
 

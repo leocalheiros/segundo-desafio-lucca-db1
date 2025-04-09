@@ -5,7 +5,6 @@ import com.segundo_desafio.game.domain.dto.RoundRequestDTO;
 import com.segundo_desafio.game.domain.enums.Move;
 import com.segundo_desafio.game.domain.validator.MoveValidator;
 import io.micrometer.common.util.StringUtils;
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Component;
 import org.apache.commons.lang3.EnumUtils;
 

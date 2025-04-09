@@ -6,7 +6,6 @@ import com.segundo_desafio.game.persistence.model.MatchHistory;
 import com.segundo_desafio.game.domain.dto.MatchHistoryResponseDTO;
 import com.segundo_desafio.game.domain.enums.Move;
 import com.segundo_desafio.game.persistence.repository.MatchHistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,13 +15,19 @@ import org.apache.logging.log4j.LogManager;
 @Service
 public class MatchHistoryService {
 
-    @Autowired
-    private MatchHistoryRepository repository;
+
+
+    private final MatchHistoryRepository repository;
+
+    public MatchHistoryService(MatchHistoryRepository repository){
+        this.repository = repository;
+    }
+
     private final Logger logger = LogManager.getLogger(MatchHistoryService.class.getName());
 
     public List<MatchHistoryResponseDTO> getAllRounds(){
         List<MatchHistory> findAll = repository.findAll();
-        logger.info("History from db:" + findAll );
+        logger.info("History from db: {}", findAll );
 
         return findAll.stream()
                 .map(this::toResponseDTO)

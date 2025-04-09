@@ -2,7 +2,6 @@ package com.segundo_desafio.game.api.controller;
 
 import com.segundo_desafio.game.domain.dto.MatchHistoryResponseDTO;
 import com.segundo_desafio.game.domain.service.MatchHistoryService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,12 @@ import java.util.List;
 @RequestMapping("/api/game")
 public class MatchHistoryController {
 
-    @Autowired
-    private MatchHistoryService matchHistoryService;
+
+    private final MatchHistoryService matchHistoryService;
+
+    public MatchHistoryController(MatchHistoryService service){
+        this.matchHistoryService = service;
+    }
 
     @GetMapping("/history")
     public ResponseEntity<List<MatchHistoryResponseDTO>> getAll(){

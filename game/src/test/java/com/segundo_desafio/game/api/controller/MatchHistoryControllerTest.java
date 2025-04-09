@@ -47,7 +47,7 @@ class MatchHistoryControllerTest {
 
         given(matchHistoryService.getAllRounds()).willReturn(expectedList);
 
-        // Realizar a requisição e validar a resposta
+
         mockMvc.perform(get("/api/game/history")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
