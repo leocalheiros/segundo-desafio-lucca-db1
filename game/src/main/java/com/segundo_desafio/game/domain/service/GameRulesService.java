@@ -2,21 +2,20 @@ package com.segundo_desafio.game.domain.service;
 
 import com.segundo_desafio.game.domain.enums.Move;
 
+import java.util.Map;
+
 public class GameRulesService {
 
-    private static boolean gameLogic(Move move, Move otherMove) {
-        return (move == Move.ROCK && otherMove == Move.SCISSORS) ||
-                (move == Move.PAPER && otherMove == Move.ROCK) ||
-                (move == Move.SCISSORS && otherMove == Move.PAPER);
-    }
+    private static final Map<Move, Move> gameLogic = Map.of(
+            Move.ROCK, Move.SCISSORS,
+            Move.PAPER, Move.ROCK,
+            Move.SCISSORS, Move.PAPER
+    );
+
 
     public static String checkWinner(Move playerOneMove, Move playerTwoMove) {
-        if (gameLogic(playerOneMove, playerTwoMove)) {
-            return "PLAYER_ONE_WINS";
-        } else if (gameLogic(playerTwoMove, playerOneMove)) {
-            return "PLAYER_TWO_WINS";
-        } else {
-            return "DRAW";
-        }
+        if (playerOneMove == playerTwoMove)return "DRAW";
+        if(gameLogic.get(playerOneMove) == playerTwoMove) return "PLAYER_ONE_WINS";
+        return "PLAYER_TWO_WINS";
     }
 }
