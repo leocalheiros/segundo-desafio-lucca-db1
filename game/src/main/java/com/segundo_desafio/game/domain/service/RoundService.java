@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +23,10 @@ public class RoundService {
     private final RoundRequestValidator roundRequestValidator;
     private final MoveValidator moveValidator;
 
+    private static final Logger logger = LogManager.getLogger(RoundService.class.getName());
+
     public RoundResponseDTO saveRound (RoundRequestDTO data){
+        logger.info("Received data: " + data);
 
         roundRequestValidator.validate(data);
         moveValidator.validate(data);
@@ -34,18 +39,19 @@ public class RoundService {
         history.setDate(LocalDateTime.now());
 
         repository.save(history);
-
+        logger.info("The match was saved in the database: ");
         Move playerOneMove = Move.valueOf(data.playerOneMove().toUpperCase());
         Move playerTwoMove = Move.valueOf(data.playerTwoMove().toUpperCase());
 
         String winner = GameRulesService.checkWinner(playerOneMove, playerTwoMove);
-
-        return new RoundResponseDTO(
+        RoundResponseDTO res = new RoundResponseDTO(
                 data.playerOneMove().toUpperCase(),
                 data.playerOneName(),
                 data.playerTwoMove().toUpperCase(),
                 data.playerTwoName(),
                 winner);
+        logger.info("Response: " + res.toString());
+        return res;
     }
 
 }
