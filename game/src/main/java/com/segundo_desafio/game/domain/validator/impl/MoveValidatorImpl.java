@@ -4,7 +4,11 @@ import com.segundo_desafio.game.api.model.exception.InvalidGameRequestException;
 import com.segundo_desafio.game.domain.dto.RoundRequestDTO;
 import com.segundo_desafio.game.domain.enums.Move;
 import com.segundo_desafio.game.domain.validator.MoveValidator;
+import io.micrometer.common.util.StringUtils;
+import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Component;
+import org.apache.commons.lang3.EnumUtils;
+
 
 @Component
 public class MoveValidatorImpl implements MoveValidator {
@@ -13,20 +17,12 @@ public class MoveValidatorImpl implements MoveValidator {
     @Override
     public void validate (RoundRequestDTO dto){
 
-        if (dto.playerOneMove() == null || dto.playerOneMove().isEmpty()) {
-            throw new InvalidGameRequestException("Player one move is required");
+        if (!StringUtils.isNotBlank(dto.playerOneMove()) || !EnumUtils.isValidEnum(Move.class,dto.playerOneMove().toUpperCase()) ) {
+            throw new InvalidGameRequestException("Not valid enum option!");
         }
-        if (dto.playerTwoMove() == null || dto.playerTwoMove().isEmpty()) {
-            throw new InvalidGameRequestException("Player two move is required");
+        if (!StringUtils.isNotBlank(dto.playerTwoMove()) || !EnumUtils.isValidEnum(Move.class,dto.playerTwoMove().toUpperCase())) {
+            throw new InvalidGameRequestException("Not valid enum option!");
         }
-
-        try {
-            Move.valueOf(dto.playerOneMove().toUpperCase());
-            Move.valueOf(dto.playerTwoMove().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            throw new InvalidGameRequestException("One or both moves are invalid (must be ROCK, PAPER or SCISSORS)");
-        }
-
 
     }
 
