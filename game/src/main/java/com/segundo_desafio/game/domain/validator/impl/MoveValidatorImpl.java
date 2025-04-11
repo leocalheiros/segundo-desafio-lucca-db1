@@ -16,17 +16,17 @@ import org.apache.logging.log4j.LogManager;
 public class MoveValidatorImpl implements MoveValidator {
 
     private final Logger logger = LogManager.getLogger(MoveValidatorImpl.class.getName());
-
+    private static final String NOT_VALID_ENUM_ERROR = "Not valid enum option.";
     @Override
     public void validate (RoundRequestDTO dto){
 
         if (!StringUtils.isNotBlank(dto.playerOneMove()) || !EnumUtils.isValidEnum(Move.class,dto.playerOneMove().toUpperCase()) ) {
-            logger.error("Not valid enum option");
-            throw new InvalidGameRequestException("Not valid enum option!");
+            logger.error(NOT_VALID_ENUM_ERROR);
+            throw new InvalidGameRequestException(NOT_VALID_ENUM_ERROR + " Player One, try again!.");
         }
         if (!StringUtils.isNotBlank(dto.playerTwoMove()) || !EnumUtils.isValidEnum(Move.class,dto.playerTwoMove().toUpperCase())) {
-            logger.error("Not valid enum option");
-            throw new InvalidGameRequestException("Not valid enum option!");
+            logger.error(NOT_VALID_ENUM_ERROR);
+            throw new InvalidGameRequestException(NOT_VALID_ENUM_ERROR + " Player two, try again!.");
         }
 
     }
