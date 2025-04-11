@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoundController {
 
     private final RoundService roundService;
-    private final Logger logger = LogManager.getLogger(MatchHistoryService.class.getName());
+    private final Logger logger = LogManager.getLogger(RoundController.class.getName());
 
     @PostMapping
     public ResponseEntity<RoundResponseDTO> startGame(@RequestBody RoundRequestDTO body){

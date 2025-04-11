@@ -21,7 +21,7 @@ public class MatchHistoryController {
 
 
     private final MatchHistoryService matchHistoryService;
-    private final Logger logger = LogManager.getLogger(MatchHistoryService.class.getName());
+    private final Logger logger = LogManager.getLogger(MatchHistoryController.class.getName());
 
 
 
